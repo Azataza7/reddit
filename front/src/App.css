@@ -3,3 +3,12 @@
   margin: 0 auto;
   padding: 2rem;
 }
+
+.input-load {
+  padding: 5px;
+}
+
+.send-container {
+  display: flex;
+  align-items: end;
+}

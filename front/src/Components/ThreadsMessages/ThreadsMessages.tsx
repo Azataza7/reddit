@@ -5,6 +5,7 @@ import { userMessage } from '../../../../api/types';
 import { fetchUserMessages } from '../../store/Threads/ThreadsThunks';
 import ThreadMessageItem from './ThreadMessageItem';
 import Loader from '../Spinner/Spinner';
+import { Grid } from '@mui/material';
 
 const ThreadsMessages = () => {
   const threadsMessageList: userMessage[] = useAppSelector(selectThreadsMessages);
@@ -26,9 +27,9 @@ const ThreadsMessages = () => {
   ));
 
   return (
-    <div className="threads-container">
+    <Grid container flexDirection={"column"}  spacing={5} className="threads-container">
       {messageList}
-    </div>
+    </Grid>
   );
 };
 

@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { userMessage } from '../types';
 import fileDb from '../fileDb';
+import { imagesUpload } from '../multer';
 
 const threadsRouter = Router();
 
@@ -11,15 +12,15 @@ threadsRouter.get('/', async (req, res) => {
   res.send(messages);
 });
 
-threadsRouter.post('/', async (req, res) => {
+threadsRouter.post('/', imagesUpload.single('image'), async (req, res) => {
   const message: userMessage = {
     author: req.body.author ? req.body.author : null,
     text: req.body.text,
-    image: req.body.image ? req.body.image : null,
-  }
+    image: req.file ? req.file.filename : null,
+  };
 
   await fileDb.addItem(message);
-  res.send(message)
-})
+  res.send(message);
+});
 
 export default threadsRouter;
