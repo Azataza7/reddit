@@ -1,21 +1,35 @@
 import React from 'react';
 import { userMessage } from '../../../../api/types';
-import { Grid, ListItem } from '@mui/material';
+import { Card, CardContent, Typography } from '@mui/material';
 import { apiURL } from '../../constans';
 
 interface Props {
   threadMessage: userMessage;
 }
 
+
 const ThreadMessageItem: React.FC<Props> = ({threadMessage}) => {
+  const imageRoot = apiURL + '/' + threadMessage.image;
+
   return (
-    <Grid item sx={{border: 'solid 1px'}}>
-      <ListItem>{threadMessage.text}</ListItem>
-      <ListItem>{threadMessage.author}</ListItem>
-      {threadMessage.image ?
-        <img src={apiURL + '/' + threadMessage.image} alt={threadMessage.image} style={{maxWidth: '150px'}}/>
-        : ''}
-    </Grid>
+    <Card sx={
+      {width: 275, marginBottom: '20px', display: "flex", justifyContent: "space-between"}
+    }>
+      <CardContent>
+        <Typography sx={{fontSize: 14}} color="text.secondary" gutterBottom>
+          {threadMessage.author ? threadMessage.author : 'Anonymous'}
+        </Typography>
+        <Typography variant="body2">
+          {threadMessage.text}
+        </Typography>
+      </CardContent>
+      <CardContent>
+        {threadMessage.image ?
+          <a href={threadMessage.image ? imageRoot : '#'}>
+          <img style={{width: '80px', height: '60px'}} src={threadMessage.image ? imageRoot : ''} alt="message-image"/>
+        </a> : ''}
+      </CardContent>
+    </Card>
   );
 };
 

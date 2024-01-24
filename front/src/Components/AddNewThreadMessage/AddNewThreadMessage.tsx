@@ -53,7 +53,7 @@ const AddNewThreadMessage = () => {
   };
 
   return (
-    <form className="send-container" onSubmit={handleSubmit}>
+    <form className="send-container" style={{marginBottom: '70px'}} onSubmit={handleSubmit}>
       <input
         style={{display: 'none'}}
         type="file"
@@ -62,12 +62,11 @@ const AddNewThreadMessage = () => {
         ref={inputRef}
 
       />
-      <Grid container direction="column" spacing={2} alignItems="center" flexBasis="50%">
+      <Grid container direction="row" spacing={2} alignItems="center">
         <Grid item sx={{color: 'white'}}>
           <TextField
             name="author"
             placeholder="write your name(not required)"
-            sx={{width: 400}}
             value={formData.author}
             onChange={handleChange}
           />
@@ -76,7 +75,7 @@ const AddNewThreadMessage = () => {
           <TextField
             name="text"
             placeholder="write here"
-            required sx={{width: 400}}
+            required
             value={formData.text}
             onChange={handleChange}
           />
@@ -88,8 +87,6 @@ const AddNewThreadMessage = () => {
             value={formData.image ? formData.image.name : ''}
           />
         </Grid>
-      </Grid>
-      <Grid container direction="row" spacing={2} alignItems="center" flexBasis="50%">
         <AttachFileIcon
           onClick={activateInput}
           cursor="pointer"

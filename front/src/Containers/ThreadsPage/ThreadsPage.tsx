@@ -5,8 +5,8 @@ import AddNewThreadMessage from '../../Components/AddNewThreadMessage/AddNewThre
 const ThreadsPage = () => {
   return (
     <>
-      <ThreadsMessages/>
       <AddNewThreadMessage/>
+      <ThreadsMessages/>
     </>
   );
 };

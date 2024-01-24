@@ -27,7 +27,7 @@ const ThreadsMessages = () => {
   ));
 
   return (
-    <Grid container flexDirection={"column"}  spacing={5} className="threads-container">
+    <Grid container flexDirection={"row"} gap="10px" spacing={5} className="threads-container">
       {messageList}
     </Grid>
   );
